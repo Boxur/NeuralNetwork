@@ -1,0 +1,49 @@
+#pragma once
+#include "layer.h"
+#include "network_data.h"
+#include "log.h"
+#include "assert.h"
+
+#include <fstream>
+#include <vector>
+#include <memory>
+
+class Network
+{
+private:
+	double learningRate_;
+	int inputCount_;
+	int outputCount_;
+	int layerCount_;
+	int biggestLayer_;
+	std::vector<std::unique_ptr<Layer>> layers_;
+	std::shared_ptr<NetworkData> data_;
+
+	double precission_;
+
+public:
+	Network(std::shared_ptr<NetworkData> data, double learningRate);
+
+	~Network();
+
+	void Train(int epochs);
+
+	void Train();
+
+	static double CalculateError(const std::vector<double>& expectedOutputs, const std::vector<double>& calculatedOutputs, int outputCount);
+
+	void SaveNetwork(const std::string& path);
+
+	bool LoadNetwork(const std::string& path);
+
+	void Test();
+
+private:
+	void Train_(std::vector<double>& inputs,std::vector<double>& outputs);
+
+	std::vector<double> Compute_(const std::vector<double>& inputs);
+
+	double TestNetwork_();
+
+	void Backpropagation_(std::vector<double>& inputs, std::vector<double>& outputs);
+};

@@ -1,4 +1,4 @@
-#include "network.h"
+#include "network.hpp"
 
 Network::Network(std::shared_ptr<NetworkData> data, double learningRate)
 {

@@ -1,4 +1,4 @@
-#include "mnist_data.h"
+#include "mnist_data.hpp"
 
 MnistData::MnistData()
 { 

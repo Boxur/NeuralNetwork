@@ -1,6 +1,6 @@
-#include "mnist_data.h"
-#include "network.h"
-#include "log.h"
+#include "mnist_data.hpp"
+#include "network.hpp"
+#include "log.hpp"
 #include <memory>
 
 int main()

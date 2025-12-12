@@ -1,5 +1,5 @@
-#include "layer.h"
-#include "log.h"
+#include "layer.hpp"
+#include "log.hpp"
 #include <cassert>
 
 Layer::Layer(int inputs, int outputs, Type type)

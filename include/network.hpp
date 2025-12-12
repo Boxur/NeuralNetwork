@@ -1,9 +1,9 @@
 #pragma once
-#include "layer.h"
-#include "network_data.h"
-#include "log.h"
-#include "assert.h"
+#include "layer.hpp"
+#include "network_data.hpp"
+#include "log.hpp"
 
+#include <assert.h>
 #include <fstream>
 #include <vector>
 #include <memory>

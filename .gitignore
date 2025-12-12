@@ -1,0 +1,5 @@
+.vim.pred
+build/
+network.nn
+neural_network
+perf.data

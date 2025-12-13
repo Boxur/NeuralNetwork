@@ -131,7 +131,7 @@ double Network::TestNetwork_()
 	int i = 0;
 	while (data_->GetNextTestData(inputs, outputs))
 	{
-		error += CalculateError_(Compute(inputs), outputs, outputCount_) >= 1;
+		error += CalculateError_(Compute(inputs), outputs, outputCount_);
 		i++;
 	}
 	return error / i;

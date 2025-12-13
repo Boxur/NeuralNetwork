@@ -43,7 +43,7 @@ double Layer::ActivationFunction(double x) const
 	if (type_ == Type::Regression)
 		return x;
 	if (type_ == Type::Classification)
-		return 1 / (1 + exp(-x));
+		return ((x<-2.5) ? 0 : ((x<2.5) ? 0.2 * x : 1)) 1 / (1 + exp(-x));
 	return 0;
 }
 

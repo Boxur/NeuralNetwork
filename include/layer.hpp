@@ -2,6 +2,8 @@
 #include <fstream>
 #include <cmath>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 class Layer
 {

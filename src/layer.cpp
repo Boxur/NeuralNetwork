@@ -4,6 +4,7 @@
 
 Layer::Layer(int inputs, int outputs, Type type)
 {
+	srand(time(NULL));
 	inputCount_ = inputs;
 	outputCount_ = outputs;
 	outputs_.resize(outputs);

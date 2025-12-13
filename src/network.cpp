@@ -43,9 +43,7 @@ void Network::Train()
 {
 	precission_ = TestNetwork_();
 
-	if (precission_ / learningRate_ < 0.6)
-		learningRate_ *= 0.5;
-	Log(std::to_string(precission_) + " " + std::to_string(learningRate_));
+	Log(std::to_string(precission_));
 	std::vector<double> inputs(biggestLayer_);
 	std::vector<double> outputs(biggestLayer_);
     data_->LoadTrainingData();
@@ -133,8 +131,7 @@ double Network::TestNetwork_()
 	int i = 0;
 	while (data_->GetNextTestData(inputs, outputs))
 	{
-		if (CalculateError(Compute_(inputs), outputs, outputCount_) >= 1)
-			error++;
+		error += CalculateError(Compute_(inputs), outputs, outputCount_) >= 1;
 		i++;
 	}
 	return error / i;

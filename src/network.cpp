@@ -1,5 +1,5 @@
 #include "network.hpp"
-
+#include <iostream>
 Network::Network(std::shared_ptr<NetworkData> data, double learningRate)
 {
 
@@ -101,7 +101,9 @@ bool Network::LoadNetwork(const std::string& path)
 
 void Network::Train_(std::vector<double>& inputs,std::vector<double>& outputs)
 {
-	inputs = Compute_(inputs);
+	std::vector<double> comp = Compute_(inputs);
+	for(int i=0;i<comp.size();i++)
+		inputs[i] = comp[i];
 	Backpropagation_(inputs, outputs);
 }
 
@@ -124,14 +126,14 @@ void Network::Test()
 
 double Network::TestNetwork_()
 {
-	std::vector<double> inputs;
-	std::vector<double> outputs;
+	std::vector<double> inputs(biggestLayer_);
+	std::vector<double> outputs(biggestLayer_);
 	if(!data_->LoadTestData()) Log(Log.error,"Failed to load test data");
 	double error = 0;
 	int i = 0;
 	while (data_->GetNextTestData(inputs, outputs))
 	{
-		if (CalculateError(Compute_(inputs), outputs, 11) >= 1)
+		if (CalculateError(Compute_(inputs), outputs, outputCount_) >= 1)
 			error++;
 		i++;
 	}
@@ -140,6 +142,7 @@ double Network::TestNetwork_()
 
 void Network::Backpropagation_(std::vector<double>& inputs, std::vector<double>& outputs)
 {
+	
 	layers_[layerCount_ - 1]->Delta(outputs, Layer::DeltaMode::Diffrence);
 	for (int i = layerCount_ - 2; i >= 0; i--)
 	{

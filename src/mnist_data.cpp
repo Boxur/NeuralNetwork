@@ -1,4 +1,5 @@
 #include "mnist_data.hpp"
+#include <iostream>
 
 MnistData::MnistData()
 { 
@@ -68,8 +69,6 @@ bool MnistData::GetNextTrainingData(std::vector<double> &inputs, std::vector<dou
 
 void MnistData::GetSameTrainingData(std::vector<double> &inputs, std::vector<double> &outputs)
 {
-	inputs.resize(784);
-	outputs.resize(11);
 	for (int i = 0; i < 784; i++)
 	{
 		inputs[i] = trainingInputArray_[i];
@@ -86,8 +85,6 @@ bool MnistData::GetNextTestData(std::vector<double> &inputs, std::vector<double>
 	{
 		return false;
 	}
-	inputs.resize(784);
-	outputs.resize(11);
 	if (rand() % 15 == 0)
 	{
 		for (int i = 0; i < 784; i++)
@@ -127,8 +124,6 @@ bool MnistData::GetNextTestData(std::vector<double> &inputs, std::vector<double>
 
 void MnistData::GetSameTestData(std::vector<double> &inputs, std::vector<double> &outputs)
 {
-	inputs.resize(784);
-	outputs.resize(11);
 	for (int i = 0; i < 784; i++)
 	{
 		inputs[i] = testInputArray_[i];

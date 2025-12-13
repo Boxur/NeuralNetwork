@@ -30,7 +30,7 @@ public:
 
 	void Train();
 
-	static double CalculateError(const std::vector<double>& expectedOutputs, const std::vector<double>& calculatedOutputs, int outputCount);
+	std::vector<double> Compute(const std::vector<double>& inputs);
 
 	void SaveNetwork(const std::string& path);
 
@@ -41,7 +41,7 @@ public:
 private:
 	void Train_(std::vector<double>& inputs,std::vector<double>& outputs);
 
-	std::vector<double> Compute_(const std::vector<double>& inputs);
+	static double CalculateError_(const std::vector<double>& expectedOutputs, const std::vector<double>& calculatedOutputs, int outputCount);
 
 	double TestNetwork_();
 

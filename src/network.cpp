@@ -53,7 +53,7 @@ void Network::Train()
 	}
 }
 
-double Network::CalculateError(const std::vector<double>& expectedOutputs, const std::vector<double>& calculatedOutputs, int outputCount)
+double Network::CalculateError_(const std::vector<double>& expectedOutputs, const std::vector<double>& calculatedOutputs, int outputCount)
 {
 	double finalError = 0;
 	double currentError;
@@ -99,13 +99,13 @@ bool Network::LoadNetwork(const std::string& path)
 
 void Network::Train_(std::vector<double>& inputs,std::vector<double>& outputs)
 {
-	std::vector<double> comp = Compute_(inputs);
+	std::vector<double> comp = Compute(inputs);
 	for(int i=0;i<comp.size();i++)
 		inputs[i] = comp[i];
 	Backpropagation_(inputs, outputs);
 }
 
-std::vector<double> Network::Compute_(const std::vector<double>& inputs)
+std::vector<double> Network::Compute(const std::vector<double>& inputs)
 {
 	std::vector ret = inputs;
 	for (int j = 0; j < layerCount_; j++)
@@ -131,7 +131,7 @@ double Network::TestNetwork_()
 	int i = 0;
 	while (data_->GetNextTestData(inputs, outputs))
 	{
-		error += CalculateError(Compute_(inputs), outputs, outputCount_) >= 1;
+		error += CalculateError_(Compute(inputs), outputs, outputCount_) >= 1;
 		i++;
 	}
 	return error / i;

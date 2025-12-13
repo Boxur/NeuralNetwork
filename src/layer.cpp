@@ -54,7 +54,7 @@ double Layer::ActivationFunctionDerivative(double x) const
 	if (type_ == Type::Regression)
 		return 1;
 	if (type_ == Type::Classification)
-		return ActivationFunction(x) * (1 - ActivationFunction(x));
+		return ((x<-2.5) ? 0.05 : ((x<2.5) ? 0.2 : 0.05));
 	return 0;
 }
 

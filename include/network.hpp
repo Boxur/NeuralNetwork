@@ -38,6 +38,8 @@ public:
 
 	void Test();
 
+	void SetLearningRate(double lr);
+
 private:
 	void Train_(std::vector<double>& inputs,std::vector<double>& outputs);
 

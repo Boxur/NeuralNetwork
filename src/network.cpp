@@ -122,6 +122,11 @@ void Network::Test()
 	Log(std::to_string(prec) + " " + std::to_string(learningRate_));
 }
 
+void Network::SetLearningRate(double lr)
+{
+	learningRate_=lr;
+}
+
 double Network::TestNetwork_()
 {
 	std::vector<double> inputs(biggestLayer_);
